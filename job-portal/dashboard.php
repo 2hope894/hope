@@ -58,29 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* Content area */
     .content { flex: 1; padding: 20px; }
     .content h1 { margin-bottom: 20px; }
-
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 10;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
-    }
-    .modal-content {
-      background-color: white;
-      color: black;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 8px;
-      width: 400px;
-    }
-    .close {
-      float: right;
-      font-size: 20px;
-      cursor: pointer;
-    }
     .btn {
       background: #2575fc;
       color: white;
@@ -90,6 +67,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       cursor: pointer;
     }
     .btn:hover { background: #1b5fc9; }
+
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
@@ -97,47 +82,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- Sidebar menu -->
 <div class="menu">
   <h2>Menu</h2>
-  <a id="openModal">Post a New Job</a>
+  <a id="showWelcome">Dashboard</a>
+  <a id="showPostJob">Post a New Job</a>
   <a href="view_applications.php">View Applications</a>
   <a href="shortlist.php">Shortlist Applicants</a>
   <a href="logout.php" class="logout">Logout</a>
 </div>
 
 <!-- Main content -->
-<div class="content">
+<div class="content" id="mainContent">
   <h1>Welcome, <?php echo htmlspecialchars($_SESSION['user']); ?>!</h1>
   <?php if (isset($message)) echo "<p style='color:lightgreen;'>$message</p>"; ?>
   <p>Select an option from the menu on the left.</p>
 </div>
 
-<!-- Modal for Posting Job -->
-<div id="jobModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>Post a New Job</h2>
-    <form method="POST" action="">
-      <input type="text" name="title" placeholder="Job Title" required style="width:100%;padding:8px;"><br><br>
-      <textarea name="description" placeholder="Job Description" rows="5" required style="width:100%;padding:8px;"></textarea><br><br>
-      <button type="submit" class="btn">Post Job</button>
-    </form>
-  </div>
-</div>
-
 <script>
-  // Get modal elements
-  const modal = document.getElementById("jobModal");
-  const openBtn = document.getElementById("openModal");
-  const closeBtn = document.querySelector(".close");
+  const mainContent = document.getElementById("mainContent");
 
-  // Open modal
-  openBtn.onclick = () => { modal.style.display = "block"; };
-  // Close modal
-  closeBtn.onclick = () => { modal.style.display = "none"; };
-  // Close if click outside
-  window.onclick = (event) => {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
+  // Show welcome message
+  document.getElementById("showWelcome").onclick = () => {
+    mainContent.innerHTML = `
+      <h1>Welcome, <?php echo htmlspecialchars($_SESSION['user']); ?>!</h1>
+      <p>Select an option from the menu on the left.</p>
+    `;
+  };
+
+  // Show post job form
+  document.getElementById("showPostJob").onclick = () => {
+    mainContent.innerHTML = `
+      <h2>Post a New Job</h2>
+      <form method="POST" action="">
+        <input type="text" name="title" placeholder="Job Title" required>
+        <textarea name="description" placeholder="Job Description" rows="5" required></textarea>
+        <button type="submit" class="btn">Post Job</button>
+      </form>
+    `;
   };
 </script>
 
