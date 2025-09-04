@@ -81,18 +81,10 @@ body {
       top: 0;
       left: 0;
       z-index: 1000;
+    
     }
-    .header div {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-weight: bold;
-    }
-    .separator {
-      border-left: 2px solid #000;
-      height: 25px;
-      margin: 0 20px;
-    }
+  
+    
     .header a {
       text-decoration: none;
       color: #1e90ff;
@@ -119,20 +111,6 @@ body {
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div>
-    <span>Employer:</span>
-    <a onclick="showLogin()">Login</a>
-    <a onclick="showRegister()">Register</a>
-  </div>
-  <div class="separator"></div>
-  <div>
-    <span>Jobseeker:</span>
-    <a onclick="showLogin()">Login</a>
-    <a onclick="showRegister()">Register</a>
-  </div>
-</div>
 
 <!-- LOGIN FORM -->
 <div class="form-container" id="loginForm">
