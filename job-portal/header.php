@@ -10,12 +10,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
   <nav>
     <a href="index.php">Job Seeker Home</a>
-    <a href="#">Job Vacancies</a>
+    <a href="job_vacancies.php">Job Vacancies</a>
     <?php if (isset($_SESSION['user'])): ?>
-      <a href="dashboard.php">Dashboard</a>
+      <a href="dashboard.php">My account</a>
     <?php endif; ?>
-    <a href="#">News</a>
-    <a href="#">FAQs</a>
+    <a href="news.php">News</a>
+    <a href="faqs.php">FAQs</a>
   </nav>
 
   <div>
