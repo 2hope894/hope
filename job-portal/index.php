@@ -33,7 +33,83 @@ if (isset($conn) && $conn instanceof mysqli && $conn->connect_errno === 0) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Portal</title>
-  <link rel="stylesheet" href="css/style.css">
+  
+<link rel="stylesheet" href="css/style.css">
+
+  <style>
+
+    /* Container Sections */
+.container {
+  padding: 100px 40px 40px; /* top padding avoids overlap with fixed header */
+  max-width: 1600px;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+  margin-top: 80px; /* ensure spacing from header */
+  margin-bottom: 80px;
+}
+
+/* Title */
+.container h1 {
+  margin-bottom: 20px;
+}
+
+/* Search Section */
+.search-section {
+  background: rgba(0, 0, 0, 0.94);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.search-section input,
+.search-section select {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+.search-section button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #ff6600;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-section button:hover {
+  background: #853804;
+}
+
+/* Jobs & News Sections */
+.jobs-section,
+.news-section {
+  margin-bottom: 30px;
+}
+
+.job-item,
+.news-item {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+  color: #fff;
+  
+}
+
+
+  </style>
+
 </head>
 <body>
 
@@ -76,20 +152,28 @@ if (isset($conn) && $conn instanceof mysqli && $conn->connect_errno === 0) {
   <!-- News -->
   <div class="news-section">
     <h2>What’s Going On?</h2>
-    <?php if(!empty($news)): ?>
-      <?php foreach($news as $item): ?>
-        <?php if (trim((string)$item) !== ''): ?>
-          <div class="news-item"><?= htmlspecialchars($item) ?></div>
-        <?php endif; ?>
-      <?php endforeach; ?>
-      <?php if (empty(array_filter($news, fn($x) => trim((string)$x) !== ''))): ?>
-        <p>No news right now.</p>
-      <?php endif; ?>
+    <?php
+    include 'db.php';
+
+    // Fetch news from DB
+    $sql = "SELECT title, content, created_at FROM news ORDER BY created_at DESC";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0):
+        while ($row = $result->fetch_assoc()):
+            // Combine title + content nicely
+            $item = "<strong>" . htmlspecialchars($row['title']) . "</strong><br>" .
+                    "<small>" . date("F j, Y, g:i a", strtotime($row['created_at'])) . "</small><br>" .
+                    nl2br(htmlspecialchars($row['content']));
+            ?>
+            <div class="news-item"><?= $item ?></div>
+        <?php endwhile; ?>
     <?php else: ?>
-      <p>No news right now.</p>
+        <p>No news right now.</p>
     <?php endif; ?>
-  </div>
 </div>
+</div>
+
 
 <!-- Mission -->
 <h2 class="mission-title">Our Mission</h2>

@@ -11,18 +11,20 @@ if (session_status() === PHP_SESSION_NONE) {
   <nav>
     <a href="index.php">Job Seeker Home</a>
     <a href="job_vacancies.php">Job Vacancies</a>
-    <?php if (isset($_SESSION['user'])): ?>
-      <a href="dashboard.php">My account</a>
-    <?php endif; ?>
+
+   <?php if (isset($_SESSION['user_name'])): ?>
+  <a href="my_account.php">My account</a>
+<?php endif; ?>
+
+  
     <a href="news.php">News</a>
     <a href="faqs.php">FAQs</a>
   </nav>
 
-  <div>
-    <?php if (!isset($_SESSION['user'])): ?>
-      <a href="auth.php" class="btn-top">Login / Register</a>
-    <?php else: ?>
-      <a href="logout.php" class="btn-top">Logout</a>
-    <?php endif; ?>
-  </div>
+<?php if (!isset($_SESSION['user_name'])): ?>
+  <a href="auth.php" class="btn-top">Login / Register</a>
+<?php else: ?>
+  <a href="logout.php" class="btn-top">Logout</a>
+<?php endif; ?>
+
 </header>
