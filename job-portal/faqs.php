@@ -8,10 +8,10 @@ $result = $conn->query("SELECT * FROM faq ORDER BY created_at DESC");
 <html>
 <head>
     <title>FAQs - Job Portal</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portal.css">
     <style>
         h2 {
-            color: #070707;
+            color: white;
             margin-top: 100px;
             margin-bottom: 20px;
             text-align: center;
@@ -22,7 +22,7 @@ $result = $conn->query("SELECT * FROM faq ORDER BY created_at DESC");
             padding: 20px;
         }
         .faq-item {
-            background: #fff;
+            background: #636ccb;
             padding: 15px 20px;
             margin-bottom: 15px;
             border-radius: 8px;
@@ -31,12 +31,12 @@ $result = $conn->query("SELECT * FROM faq ORDER BY created_at DESC");
         .faq-question {
             font-size: 18px;
             font-weight: bold;
-            color: #007BFF;
+            color: white;
             margin-bottom: 8px;
         }
         .faq-answer {
             font-size: 16px;
-            color: #333;
+            color: white;
         }
     </style>
 </head>
@@ -58,6 +58,12 @@ $result = $conn->query("SELECT * FROM faq ORDER BY created_at DESC");
         <p>No FAQs available at the moment.</p>
     <?php endif; ?>
 </main>
+
+<!-- Mission -->
+<h2 class="mission-title">Our Mission</h2>
+<p class="mission-text">
+  At JobPortal, we aim to help people get jobs and help employers connect with the right people.
+</p>
 
 <!-- Footer -->
 <?php include 'footer.php'; ?>

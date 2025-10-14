@@ -31,7 +31,7 @@ $result = $stmt->get_result();
 <html>
 <head>
     <title>Job Vacancies</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portal.css">
     <style>
         
         
@@ -42,7 +42,7 @@ $result = $stmt->get_result();
               margin: 20px auto;
              margin-top: 100px;}
 
-        .filters { background: #fff;
+        .filters { background: #636ccb;
              padding: 15px;
               border-radius: 6px;
                margin-bottom: 20px; }
@@ -121,6 +121,12 @@ $result = $stmt->get_result();
             <p>No jobs found.</p>
         <?php } ?>
     </div>
+
+     <!-- Mission -->
+<h2 class="mission-title">Our Mission</h2>
+<p class="mission-text">
+  At JobPortal, we aim to help people get jobs and help employers connect with the right people.
+</p>
 
       <!-- Footer -->
   <?php include 'footer.php'; ?>

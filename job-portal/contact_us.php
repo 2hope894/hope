@@ -5,7 +5,7 @@ session_start();
 <html>
 <head>
   <title>Jobseekers - Job Portal</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
   <style>
 
 

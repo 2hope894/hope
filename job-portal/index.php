@@ -34,7 +34,7 @@ if (isset($conn) && $conn instanceof mysqli && $conn->connect_errno === 0) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Portal</title>
   
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/portal.css">
 
   <style>
 
@@ -43,7 +43,7 @@ if (isset($conn) && $conn instanceof mysqli && $conn->connect_errno === 0) {
   padding: 100px 40px 40px; /* top padding avoids overlap with fixed header */
   max-width: 1600px;
   width: 100%;
-  background: rgba(0,0,0,0.6);
+  background: #636ccb;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   text-align: center;
@@ -58,7 +58,7 @@ if (isset($conn) && $conn instanceof mysqli && $conn->connect_errno === 0) {
 
 /* Search Section */
 .search-section {
-  background: rgba(0, 0, 0, 0.94);
+  background: rgba(0, 0, 0, 0.17);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
@@ -99,7 +99,7 @@ if (isset($conn) && $conn instanceof mysqli && $conn->connect_errno === 0) {
 
 .job-item,
 .news-item {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.17);
   padding: 12px;
   border-radius: 8px;
   margin: 8px 0;

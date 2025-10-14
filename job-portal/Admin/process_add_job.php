@@ -1,27 +1,51 @@
 <?php
 session_start();
-include '../db.php'; // adjust path if needed
+include 'db.php'; // Make sure this file contains your database connection ($conn)
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = trim($_POST['title']);
-    $description = trim($_POST['description']);
-    $location = trim($_POST['location']);
-    $deadline = $_POST['deadline'];
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if ($title !== "" && $description !== "" && $location !== "" && $deadline !== "") {
-        $stmt = $conn->prepare("INSERT INTO jobs (title, description, location, deadline) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $title, $description, $location, $deadline);
+    // Get form data safely
+    $title = mysqli_real_escape_string($conn, $_POST['title']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $requirements = mysqli_real_escape_string($conn, $_POST['requirements']);
+    $location = mysqli_real_escape_string($conn, $_POST['location']);
+    $region = mysqli_real_escape_string($conn, $_POST['region']);
+    $category = mysqli_real_escape_string($conn, $_POST['category']);
+    $salaryrange = mysqli_real_escape_string($conn, $_POST['salaryrange']);
+    $posteddate = mysqli_real_escape_string($conn, $_POST['posteddate']);
+    $expirydate = mysqli_real_escape_string($conn, $_POST['expirydate']);
+    $moreinformation = mysqli_real_escape_string($conn, $_POST['moreinformation']);
 
-        if ($stmt->execute()) {
-            echo "<p style='color:green;'>Job added successfully!</p>";
-            echo "<a href='add_job.php'>Back to Add Job</a>";
+    // Prepare SQL statement
+    $sql = "INSERT INTO job (title, description, requirements, location, region, category, salaryrange, posteddate, expirydate, moreinformation)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ssssssssss", $title, $description, $requirements, $location, $region, $category, $salaryrange, $posteddate, $expirydate, $moreinformation);
+        
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>
+                    alert('Job added successfully!');
+                    window.location.href='view_jobs.php'; // redirect to job listing page
+                  </script>";
         } else {
-            echo "<p style='color:red;'>Error: " . $stmt->error . "</p>";
+            echo "<script>
+                    alert('Error adding job. Please try again.');
+                    window.history.back();
+                  </script>";
         }
-        $stmt->close();
+
+        mysqli_stmt_close($stmt);
     } else {
-        echo "<p style='color:red;'>All fields are required.</p>";
+        echo "<script>alert('Database error: Unable to prepare statement.');</script>";
     }
+
+    mysqli_close($conn);
+
+} else {
+    echo "<script>alert('Invalid request.');</script>";
 }
-$conn->close();
 ?>

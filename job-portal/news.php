@@ -9,18 +9,18 @@ $result = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
 <head>
     <title>Latest News</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/portal.css">
 
     <style>
         h2 { 
-            color: #070707;
+            color: white;
             margin-top: 100px;
             margin-bottom: 20px; 
             text-align: center;
         }
 
         .news-item { 
-            background: #fff;
+            background: #636ccb;
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
@@ -30,19 +30,19 @@ $result = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
         .news-title { 
             font-size: 20px;
             font-weight: bold;
-            color: #007BFF;
+            color: white;
             margin-bottom: 8px; 
         }
 
         .news-date { 
             font-size: 14px;
-            color: #777;
+            color: white;
             margin-bottom: 10px; 
         }
 
         .news-content { 
             font-size: 16px;
-            color: #333; 
+            color: white; 
         }
     </style>
 </head>
@@ -65,6 +65,12 @@ $result = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
     <?php } else { ?>
         <p>No news available.</p>
     <?php } ?>
+
+<!-- Mission -->
+<h2 class="mission-title">Our Mission</h2>
+<p class="mission-text">
+  At JobPortal, we aim to help people get jobs and help employers connect with the right people.
+</p>
 
 <!-- Footer -->
 <?php include 'footer.php'; ?>

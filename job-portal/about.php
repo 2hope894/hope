@@ -5,7 +5,7 @@ session_start();
 <html>
 <head>
   <title>About Us - Job Portal</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
   <style>
     .container {
        flex:1; 

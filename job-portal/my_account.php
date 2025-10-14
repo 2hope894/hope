@@ -162,21 +162,21 @@ $experience_opts = [
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>My Account - Profile</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/portal.css">
   <style>
-    body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:#0f1115;color:#e9ecef;margin:0;padding:0}
+    body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:#50589c;color:#e9ecef;margin:0;padding:0}
     .wrap{max-width:900px;margin:80px auto;padding:20px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.06));padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .card{background:linear-gradient(180deg,#636ccb,rgba(0,0,0,0.06));padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     h1{margin:0 0 8px}
-    .muted{color:#9ea3a8;font-size:14px;margin-bottom:12px}
+    .muted{color:white;font-size:14px;margin-bottom:12px}
     form .grid{display:grid;grid-template-columns:1fr 220px;gap:16px}
     .left{display:grid;gap:12px}
-    label{font-size:13px;color:#cfd4d8}
-    input[type=text],input[type=email],input[type=date],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    label{font-size:13px;color:white;}
+    input[type=text],input[type=email],input[type=date],select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:black;}
     textarea{min-height:80px}
     .right{display:flex;flex-direction:column;align-items:center;gap:12px}
     .avatar-preview{width:160px;height:160px;border-radius:12px;background:rgba(255,255,255,0.03);display:grid;place-items:center;font-weight:700}
-    .small{font-size:13px;color:#9ea3a8}
+    .small{font-size:13px;color:white;}
     .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
     .btn.primary{background:linear-gradient(90deg,#3a7bfd,#2ed0a8);color:#071017}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit}
@@ -300,6 +300,12 @@ $experience_opts = [
 
   </div>
 </main>
+
+<!-- Mission -->
+<h2 class="mission-title">Our Mission</h2>
+<p class="mission-text">
+  At JobPortal, we aim to help people get jobs and help employers connect with the right people.
+</p>
 
 <?php include 'footer.php'; ?>
 
